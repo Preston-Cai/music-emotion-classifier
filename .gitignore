@@ -1,0 +1,31 @@
+# datasets
+kaggle/
+sample_audio/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+
+# Jupyter notebooks
+.ipynb_checkpoints
+
+# IDEs
+.vscode/
+.idea/
+
+# Data
+*.csv
+*.h5
+*.pkl
+*.npy
+
+# Logs
+*.log
