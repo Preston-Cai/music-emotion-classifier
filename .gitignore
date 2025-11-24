@@ -24,7 +24,6 @@ env/
 # Data
 *.csv
 *.h5
-*.pkl
 *.npy
 
 # Logs
