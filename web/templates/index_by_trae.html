@@ -1,0 +1,139 @@
+/* not finished: index.html
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Emotion Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Music Emotion Classifier</h1>
+        <p>Upload a WAV file to classify its emotional content</p>
+        
+        <div class="upload-container">
+            <form id="upload-form" enctype="multipart/form-data">
+                <div class="file-input">
+                    <input type="file" id="audio-file" name="file" accept=".wav" required>
+                    <label for="audio-file">Choose a WAV file</label>
+                </div>
+                <button type="submit" id="upload-button">Classify Emotion</button>
+            </form>
+        </div>
+        
+        <div id="result-container" class="hidden">
+            <h2>Classification Result</h2>
+            <div class="result-box">
+                <p>The emotion in this music is: <span id="emotion-result" class="emotion-text"></span></p>
+            </div>
+            <div class="audio-player">
+                <h3>Audio Preview</h3>
+                <audio id="audio-player" controls></audio>
+            </div>
+            <button id="reset-button">Classify Another File</button>
+        </div>
+        
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Analyzing audio...</p>
+        </div>
+        
+        <div id="error-container" class="hidden">
+            <p id="error-message" class="error-text"></p>
+            <button id="error-reset-button">Try Again</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('upload-form');
+            const resultContainer = document.getElementById('result-container');
+            const loadingContainer = document.getElementById('loading');
+            const errorContainer = document.getElementById('error-container');
+            const errorMessage = document.getElementById('error-message');
+            const emotionResult = document.getElementById('emotion-result');
+            const audioPlayer = document.getElementById('audio-player');
+            const resetButton = document.getElementById('reset-button');
+            const errorResetButton = document.getElementById('error-reset-button');
+            const fileInput = document.getElementById('audio-file');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const file = fileInput.files[0];
+                if (!file) {
+                    showError('Please select a WAV file');
+                    return;
+                }
+                
+                // Show loading
+                form.classList.add('hidden');
+                loadingContainer.classList.remove('hidden');
+                resultContainer.classList.add('hidden');
+                errorContainer.classList.add('hidden');
+                
+                // Create audio URL for preview
+                const audioURL = URL.createObjectURL(file);
+                audioPlayer.src = audioURL;
+                
+                // Send file to server
+                const formData = new FormData();
+                formData.append('file', file);
+                
+                fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(data => {
+                            throw new Error(data.error || 'Error processing file');
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Hide loading, show result
+                    loadingContainer.classList.add('hidden');
+                    resultContainer.classList.remove('hidden');
+                    
+                    // Display result
+                    if (data.error) {
+                        showError(data.error);
+                    } else {
+                        emotionResult.textContent = data.emotion;
+                        emotionResult.className = 'emotion-text' + data.emotion;
+                    }
+                })
+                .catch(error => {
+                    loadingContainer.classList.add('hidden');
+                    showError(error.message);
+                });
+            });
+            
+            resetButton.addEventListener('click', function() {
+                resultContainer.classList.add('hidden');
+                form.classList.remove('hidden');
+                fileInput.value = '';
+            });
+            
+            errorResetButton.addEventListener('click', function() {
+                errorContainer.classList.add('hidden');
+                form.classList.remove('hidden');
+                fileInput.value = '';
+            });
+            
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorContainer.classList.remove('hidden');
+                loadingContainer.classList.add('hidden');
+                resultContainer.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -3,11 +3,11 @@ import numpy as np
 import librosa
 import librosa.display
 
-# file_path = '../sample_audio/03-01-01-01-01-01-01.wav' 
-# y, sr = librosa.load(file_path)
+file_path = 'sample_audio/03-01-01-01-01-01-01.wav' 
+y, sr = librosa.load(file_path)
 
 
-def extract_feature(y, sr) -> np.array:
+def extract_features(y, sr) -> np.array:
 
     # extract MFCCs
     mfccs = librosa.feature.mfcc(y=y, sr=sr)
@@ -67,5 +67,8 @@ def extract_feature(y, sr) -> np.array:
          mfccs_std, chroma_std, [spectral_centroids_std], [rms_std]]
          )
     # print('feature vector:', feature_vector)
-    # print('Feature vector shape:', feature_vector.shape)
+    print('Feature vector shape:', feature_vector.shape)
     return feature_vector
+
+
+extract_features(y, sr)

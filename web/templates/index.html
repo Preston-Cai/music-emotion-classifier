@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Classify Music Emotion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<h1>Emotion Classifier</h1>
+
+
+<body>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul>
+      {% for msg in messages %}
+        <li>{{ msg }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+{% if uploaded %}
+  <p>Uploaded file: {{ uploaded }}</p>
+  <form action="{{ url_for('classify') }}" method="post">
+    <button type="submit">Classify Emotion</button>
+  </form>
+{% else %}
+  <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button type="submit">Upload</button>
+  </form>
+{% endif %}
+
+{% if emotion %}
+  <h2>Emotion detected: {{ emotion }}</h2>
+  <form action="{{ url_for('back') }}" method="get">
+    <button type="submit">Classify Another Song</button>
+  </form>
+{% endif %}
+
+</body>
+</html>

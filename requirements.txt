@@ -1,9 +1,14 @@
 # requirements.txt for music-emotion-classifier
 
-
+# app body dependencies
 pylab>=0.13.1
 numpy>=1.24
 scikit-learn>=1.2
 pandas>=1.5
 librosa>=0.9.2
 matplotlib>=3.6
+
+# web dependencies
+flask
+waitress
+pvrecorder

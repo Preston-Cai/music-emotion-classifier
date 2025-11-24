@@ -1,0 +1,167 @@
+/* not finished: style.css
+
+
+/* Main styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+h2, h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Upload form */
+.upload-container {
+    margin: 2rem 0;
+}
+
+.file-input {
+    position: relative;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.file-input input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-input label {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: #3498db;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.file-input label:hover {
+    background-color: #2980b9;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #27ae60;
+}
+
+#reset-button, #error-reset-button {
+    margin-top: 1.5rem;
+    background-color: #95a5a6;
+}
+
+#reset-button:hover, #error-reset-button:hover {
+    background-color: #7f8c8d;
+}
+
+/* Results */
+.result-box {
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.emotion-text {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Emotion colors */
+.neutral { color: #95a5a6; }
+.calm { color: #3498db; }
+.happy { color: #f1c40f; }
+.sad { color: #9b59b6; }
+.angry { color: #e74c3c; }
+.fearful { color: #8e44ad; }
+.disgust { color: #27ae60; }
+.surprised { color: #e67e22; }
+
+/* Audio player */
+.audio-player {
+    margin: 1.5rem 0;
+}
+
+audio {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+/* Loading spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error message */
+.error-text {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Utility classes */
+.hidden {
+    display: none;
+}

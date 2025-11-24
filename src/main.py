@@ -36,7 +36,7 @@ def save_csv():
 
                 y, sr = librosa.load(file_path)
                 
-                feature_vector = ef.extract_feature(y, sr)
+                feature_vector = ef.extract_features(y, sr)
                 emotion_id = int(filename.split('-')[2])
 
                 data.append([filename] + list(feature_vector) + [emotion_id])
