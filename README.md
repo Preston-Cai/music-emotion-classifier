@@ -1,4 +1,4 @@
-# speech-emotion-classifier
+# Speech Emotion Classifier
 
 A simple project for classifying speech emotion using audio features and machine learning.
 
@@ -14,8 +14,7 @@ A simple project for classifying speech emotion using audio features and machine
 
 
 # Quick Start
-
-## To Launch the Web App
+## To launch the web app
 1. Set up virtual env:
 ```bash
 # create
