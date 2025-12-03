@@ -4,9 +4,11 @@ next step: add pv recording feature
 
 
 import os
+import subprocess
 from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 import web.classify as clf
+
 
 app = Flask(__name__)
 
@@ -61,13 +63,21 @@ def classify():
 def back():
     return redirect(url_for('index'))
 
-
 # added record route
 @app.route('/record', methods=['POST'])
 def record():
-    request.files['audio'].save(os.path.join(app.config['UPLOAD_FOLDER'], 'audio.wav'))
-    return render_template('index.html', recorded=True)
-
+    folder_path = app.config['UPLOAD_FOLDER']
+    request.files['audio'].save(os.path.join(folder_path, 'temp.webm'))
+    subprocess.run([
+        'ffmpeg', 
+        '-y',
+        '-i', 
+         os.path.join(folder_path, 'temp.webm'), 
+         os.path.join(folder_path, 'audio.wav')
+         ], check=True)
+    os.remove(os.path.join(folder_path, 'temp.webm'))
+    print('Wave file saved!')
+    return render_template('index.html', recorded='recorded')
 
 
 if __name__ == '__main__':

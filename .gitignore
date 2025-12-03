@@ -13,6 +13,7 @@ venv/
 .venv/
 ENV/
 env/
+pyvenv.cfg
 
 # Jupyter notebooks
 .ipynb_checkpoints

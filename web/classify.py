@@ -20,7 +20,6 @@ def extract_features_from_file(audio_file):
 def predict_emotion(audio_features):
     
     with open('model\emotion_classifier.pkl', 'rb') as f:
-        print(f.read(128))
         f.seek(0)
         model = pickle.load(f)
 
@@ -30,7 +29,7 @@ def predict_emotion(audio_features):
     return emotions[model.predict(audio_features)[0]]
 
 if __name__ == '__main__':
-    print(
+    print('Emotion detected: ',
         predict_emotion(
             extract_features_from_file('web/uploads/audio.wav')
             )

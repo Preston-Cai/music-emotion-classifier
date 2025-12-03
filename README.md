@@ -6,16 +6,34 @@ A simple project for classifying speech emotion using audio features and machine
 - Extracts audio features (e.g., MFCC, chroma, spectral contrast)
 - Trains and evaluates classifiers (e.g. Random Forest, MLP)
 - Inference pipeline for single-track emotion prediction
-- Basic web app for uploading audio files and getting predictions
+- Basic web app with Flask and Javascript
+- App features include uploading/recording audio files and getting predictions
 
 ## Requirements
-- Python 3.8+
-- librosa, numpy, pandas, scikit-learn, matplotlib, flask
+- Python>=3.10, <3.14
+- librosa, numpy, pandas, scikit-learn, matplotlib, flask, etc.
 
-## set up virtual env
-- in the cmd terminal, in the repo directory, run  ```venv\Scripts\activate```
 
-## project structure
+# Quick Start
+
+1. Set up virtual env:
+```bash
+# create
+python -m venv /path/to/new/virtual/environment
+# activate (for windows)
+venv\Scripts\activate
+```
+
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+3. Run web app:
+```bash
+python -m web.app
+```
+
+# project structure
 ```
 ├─ .gitignore
 ├─ README.md

@@ -5,6 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Classify Music Emotion</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- <script type="module" src="{{ url_for('static', filename='bundle.js')}}"></script> -->
+    
+    
 </head>
 <h1>Emotion Classifier</h1>
 
@@ -21,18 +24,19 @@
   {% endif %}
 {% endwith %}
 
+
 {% if uploaded %}
   <p>Uploaded file: {{ uploaded }}</p>
   <form action="{{ url_for('classify') }}" method="post">
     <button type="submit">Classify Emotion</button>
   </form>
+{% endif %}
 
 {% if recorded %}
   <p>Recorded file</p>
   <form action="{{ url_for('classify') }}" method="post">
     <button type="submit">Classify Emotion</button>
   </form>
-{% endif %}
 
 {% elif emotion %}
   <h2>Emotion detected: {{ emotion }}</h2>
@@ -47,10 +51,20 @@
   </form>
 
   <br>
+
     <button id="start">Start Recording</button>
     <button id="stop">Stop Recording</button>
 
+    <form id="recordForm" action="{{ url_for('record') }}" method="POST" enctype="multipart/form-data">
+    <input type="file" name="audio" id="hiddenFileInput" style="display:none">
+    </form>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    
+
 {% endif %}
 
+
+  
 </body>
 </html>
