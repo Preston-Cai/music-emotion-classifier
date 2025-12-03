@@ -52,6 +52,7 @@ python main.py
 
 
 # Project Structure
+```
 speech-emotion-classifier/
 ├── .gitignore
 ├── legacy/
@@ -85,3 +86,4 @@ speech-emotion-classifier/
     │   └── style.css
     └── templates/
         └── index.html
+```
