@@ -30,9 +30,8 @@
   <form action="{{ url_for('classify') }}" method="post">
     <button type="submit">Classify Emotion</button>
   </form>
-{% endif %}
 
-{% if recorded %}
+{% elif recorded %}
   <p>Recorded file</p>
   <form action="{{ url_for('classify') }}" method="post">
     <button type="submit">Classify Emotion</button>
