@@ -15,8 +15,8 @@ Link to the dataset used: https://www.kaggle.com/datasets/uwrfkaggler/ravdess-em
 - librosa, numpy, pandas, scikit-learn, matplotlib, flask, etc. See requirements.txt for details.
 
 
-# Quick Start
-## To launch the web app
+## Quick Start
+### To launch the web app
 1. Set up virtual env:
 ```bash
 # create
@@ -34,7 +34,7 @@ pip install -r requirements.txt
 python -m web.app
 ```
 
-## To train and test the model
+### To train and test the model
 1. Prepare audio dataset: create a directory containing subdirectories. Audio files need to in wav format and be put in the subdirectories. change folder path in   `src/main.py`. Example:
 ```bash
 kaggle/actor_1  # put audio files inside /actor_1
@@ -47,7 +47,7 @@ cd src
 python main.py
 ```
 
-# Next Steps/Possible Expansions
+## Next Steps/Possible Expansions
 1. Add commands for single audio emotion classification.
 2. Improve web app user interface.
 3. Denoise before processing audio.
@@ -55,7 +55,7 @@ python main.py
 4. Train more advanced models (e.g. CNN) on audio waveform/spectrograms
 
 
-# Project Structure
+## Project Structure
 ```
 speech-emotion-classifier/
 ├── .gitignore
