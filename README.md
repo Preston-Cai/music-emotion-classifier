@@ -8,7 +8,7 @@ A simple project for classifying speech emotion using audio features and machine
 - Inference pipeline for single-track emotion prediction
 - Basic web app with Flask and Javascript with uploading/recording feature
 
-Link to datasets used: https://www.kaggle.com/datasets/uwrfkaggler/ravdess-emotional-speech-audio.
+Link to the dataset used: https://www.kaggle.com/datasets/uwrfkaggler/ravdess-emotional-speech-audio.
 
 ## Requirements
 - Python>=3.10, <3.14
